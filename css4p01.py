@@ -12,17 +12,18 @@ Created on Thu Feb  1 13:34:59 2024
 ############################################################
 
 import pandas as pd
+import math
 
-df = pd.DataFrame
-df = pd.read_csv("movie_dataset.csv")
+df_cleaned = pd.DataFrame
+df_cleaned = pd.read_csv("movie_dataset.csv")
 
-df.columns = df.columns.str.replace(' ', '_')
+df_cleaned.columns = df_cleaned.columns.str.replace(' ', '_')
 
-# avg_metascore = df["Metascore"].mean()
-# rounded_average = math.ceil(avg_metascore)
-# df["Metascore"].fillna(rounded_average, inplace=True)
+avg_metascore = df_cleaned["Metascore"].mean()
+rounded_average = math.ceil(avg_metascore)
+df_cleaned["Metascore"].fillna(rounded_average, inplace=True)
 
-# df.dropna(inplace=True)
+df_cleaned.dropna(inplace=True)
 
 ############################################################
 #
@@ -30,6 +31,11 @@ df.columns = df.columns.str.replace(' ', '_')
 #   What is the highest rated movie in the dataset?
 #
 ############################################################
+
+df = pd.DataFrame
+df = pd.read_csv("movie_dataset.csv")
+df.columns = df.columns.str.replace(' ', '_')
+#Used the original data since the answers will change if the data is removed from the file
 
 max_rating = df['Rating'].max()
 max_rating_name = df.loc[df['Rating'].idxmax(), 'Title']
